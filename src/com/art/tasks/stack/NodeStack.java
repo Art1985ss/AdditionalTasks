@@ -1,7 +1,5 @@
 package com.art.tasks.stack;
 
-import org.w3c.dom.Node;
-
 import java.util.EmptyStackException;
 
 public class NodeStack<T> implements Stack<T> {

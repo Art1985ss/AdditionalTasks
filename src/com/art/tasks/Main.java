@@ -2,6 +2,7 @@ package com.art.tasks;
 
 import com.art.tasks.binary.BinaryTreeApp;
 import com.art.tasks.doubly.DoublyListApp;
+import com.art.tasks.postfix.PostfixCalculatorApp;
 import com.art.tasks.stack.NodeStackApp;
 
 import java.util.Arrays;
@@ -9,6 +10,7 @@ import java.util.Scanner;
 
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
         do {
             System.out.println();
@@ -34,6 +36,10 @@ public class Main {
                 new BinaryTreeApp().execute();
                 yield true;
             }
+            case INFIX_POSTFIX -> {
+                new PostfixCalculatorApp().execute();
+                yield true;
+            }
         };
     }
 
@@ -41,7 +47,8 @@ public class Main {
         EXIT("Exit from program"),
         NODE_STACK("Interact with node stack demo (task 1)"),
         DOUBLY_LINKED_LIST("Interact with doubly linked list (task 3)"),
-        BINARY_TREE("Binary search tree and traversing a binary tree demo (tasks 4 and 6)");
+        BINARY_TREE("Binary search tree and traversing a binary tree demo (tasks 4 and 6)"),
+        INFIX_POSTFIX("Conversion from infix to postfix and postfic calculations demo (task 9 and 10)");
 
         private final String text;
 
