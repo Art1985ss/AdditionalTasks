@@ -1,5 +1,6 @@
 package com.art.tasks;
 
+import com.art.tasks.binary.BinaryTreeApp;
 import com.art.tasks.doubly.DoublyListApp;
 import com.art.tasks.stack.NodeStackApp;
 
@@ -29,13 +30,18 @@ public class Main {
                 new DoublyListApp().execute();
                 yield true;
             }
+            case BINARY_TREE -> {
+                new BinaryTreeApp().execute();
+                yield true;
+            }
         };
     }
 
     private enum MenuOptions {
         EXIT("Exit from program"),
-        NODE_STACK("Interact with node stack demo"),
-        DOUBLY_LINKED_LIST("Interact with doubly linked list");
+        NODE_STACK("Interact with node stack demo (task 1)"),
+        DOUBLY_LINKED_LIST("Interact with doubly linked list (task 3)"),
+        BINARY_TREE("Binary search tree and traversing a binary tree demo (tasks 4 and 6)");
 
         private final String text;
 
