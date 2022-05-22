@@ -18,7 +18,15 @@ public class DoublyListApp {
             Arrays.stream(MenuOptions.values())
                     .map(value -> value.ordinal() + value.toString())
                     .forEach(System.out::println);
-            run = switch (MenuOptions.values()[Integer.parseInt(scanner.nextLine())]) {
+            final MenuOptions menuOptions;
+            try {
+                menuOptions = MenuOptions.values()[Integer.parseInt(scanner.nextLine())];
+            } catch (Exception ignored) {
+                System.out.println("Invalid option!");
+                run = true;
+                continue;
+            }
+            run = switch (menuOptions) {
                 case ADD_BY_INDEX -> {
                     System.out.println("Please enter index and new value (ex: 2 5)");
                     final int[] arr = Arrays.stream(scanner.nextLine().split("\\s")).mapToInt(Integer::parseInt).toArray();

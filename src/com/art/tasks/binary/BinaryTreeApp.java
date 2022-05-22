@@ -12,11 +12,18 @@ public class BinaryTreeApp {
             System.out.println();
             System.out.println("This menu includes 2 tasks, 4(binary search tree) and 6 (traversal)");
             Arrays.stream(MenuOptions.values()).forEach(System.out::println);
-        }while (userInteraction());
+        } while (userInteraction());
     }
 
     private boolean userInteraction() {
-        return switch (MenuOptions.values()[Integer.parseInt(scanner.nextLine())]) {
+        final MenuOptions menuOptions;
+        try {
+            menuOptions = MenuOptions.values()[Integer.parseInt(scanner.nextLine())];
+        } catch (Exception ignored) {
+            System.out.println("Invalid option!");
+            return true;
+        }
+        return switch (menuOptions) {
             case EXIT -> false;
             case ADD -> {
                 System.out.println("Please enter integer value to be added");
@@ -26,7 +33,7 @@ public class BinaryTreeApp {
             case CONTAINS -> {
                 System.out.println("Please enter integer value you want to check if it present in the tree");
                 boolean present = binaryTree.search(Integer.parseInt(scanner.nextLine()));
-                System.out.println("This value is " + (present ? "" : "not") +  " present in the tree");
+                System.out.println("This value is " + (present ? "" : "not") + " present in the tree");
                 yield true;
             }
             case DELETE -> {

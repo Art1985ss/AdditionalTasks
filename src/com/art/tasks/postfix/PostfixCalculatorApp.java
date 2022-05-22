@@ -14,25 +14,34 @@ public class PostfixCalculatorApp {
     }
 
     private boolean userInteraction() {
-        return switch (MenuOptions.values()[Integer.parseInt(scanner.nextLine())]) {
+        final MenuOptions menuOptions;
+        try {
+            menuOptions = MenuOptions.values()[Integer.parseInt(scanner.nextLine())];
+        } catch (Exception ignored) {
+            System.out.println("Invalid option!");
+            return true;
+        }
+        final String optionText = "Please enter your expression you want to convert for example: ( 7 + 10 - 2 ) * 3 + 8 / 4";
+        final String elementsSpacingSuggestion = "There should be spaces between elements";
+        return switch (menuOptions) {
             case EXIT -> false;
             case INFIX_TO_POSTFIX -> {
-                System.out.println("Please enter your expression you want to convert for example: ( 7 + 10 - 2 ) * 3 + 8 / 4");
-                System.out.println("There should be spaces between elements");
+                System.out.println(optionText);
+                System.out.println(elementsSpacingSuggestion);
                 final PostfixCalculator.Result result = postfixCalculator.infixToPostfix(scanner.nextLine());
                 System.out.println(result.consoleOutput());
                 yield true;
             }
             case CALCULATE_POSTFIX_LIFO -> {
-                System.out.println("Please enter your expression you want to convert for example: ( 7 + 10 - 2 ) * 3 + 8 / 4");
-                System.out.println("There should be spaces between elements");
+                System.out.println(optionText);
+                System.out.println(elementsSpacingSuggestion);
                 final PostfixCalculator.Result result = postfixCalculator.calculatePostfix(scanner.nextLine(), true);
                 System.out.println(result.consoleOutput());
                 yield true;
             }
             case CALCULATE_POSTFIX_POLISH -> {
-                System.out.println("Please enter your expression you want to convert for example: ( 7 + 10 - 2 ) * 3 + 8 / 4");
-                System.out.println("There should be spaces between elements");
+                System.out.println(optionText);
+                System.out.println(elementsSpacingSuggestion);
                 final PostfixCalculator.Result result = postfixCalculator.calculatePostfix(scanner.nextLine(), false);
                 System.out.println(result.consoleOutput());
                 yield true;

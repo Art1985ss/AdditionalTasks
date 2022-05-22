@@ -2,9 +2,7 @@ package com.art.tasks.postfix;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.Deque;
 import java.util.Stack;
 import java.util.function.Function;
 import java.util.stream.Collectors;

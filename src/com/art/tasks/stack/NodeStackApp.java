@@ -16,7 +16,14 @@ public class NodeStackApp {
     }
 
     private boolean userInteraction() {
-        return switch (MenuOptions.values()[Integer.parseInt(scanner.nextLine())]) {
+        final MenuOptions menuOptions;
+        try {
+            menuOptions = MenuOptions.values()[Integer.parseInt(scanner.nextLine())];
+        } catch (Exception ignored) {
+            System.out.println("Invalid option!");
+            return true;
+        }
+        return switch (menuOptions) {
             case EXIT -> false;
             case PUSH -> {
                 System.out.println("Please enter string value you want to add");

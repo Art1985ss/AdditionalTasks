@@ -19,7 +19,14 @@ public class Main {
     }
 
     private static boolean userInteraction() {
-        return switch (MenuOptions.values()[Integer.parseInt(scanner.nextLine())]) {
+        final MenuOptions menuOptions;
+        try {
+            menuOptions = MenuOptions.values()[Integer.parseInt(scanner.nextLine())];
+        } catch (Exception ignored) {
+            System.out.println("Invalid option!");
+            return true;
+        }
+        return switch (menuOptions) {
             case EXIT -> {
                 System.out.println("Bye bye!");
                 yield false;
