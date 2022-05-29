@@ -49,7 +49,6 @@ public class PostfixCalculatorApp {
         };
     }
 
-
     private enum MenuOptions {
         EXIT("Return to main menu"),
         INFIX_TO_POSTFIX("Convert infix to postfix"),

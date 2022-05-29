@@ -2,6 +2,7 @@ package com.art.tasks;
 
 import com.art.tasks.binary.BinaryTreeApp;
 import com.art.tasks.doubly.DoublyListApp;
+import com.art.tasks.heap.HeapApp;
 import com.art.tasks.postfix.PostfixCalculatorApp;
 import com.art.tasks.stack.NodeStackApp;
 
@@ -39,6 +40,10 @@ public class Main {
                 new DoublyListApp().execute();
                 yield true;
             }
+            case HEAP -> {
+                new HeapApp().execute();
+                yield true;
+            }
             case BINARY_TREE -> {
                 new BinaryTreeApp().execute();
                 yield true;
@@ -54,6 +59,7 @@ public class Main {
         EXIT("Exit from program"),
         NODE_STACK("Interact with node stack demo (task 1)"),
         DOUBLY_LINKED_LIST("Interact with doubly linked list (task 3)"),
+        HEAP("Interact with min heap (task 5)"),
         BINARY_TREE("Binary search tree and traversing a binary tree demo (tasks 4 and 6)"),
         INFIX_POSTFIX("Conversion from infix to postfix and postfix calculations demo (task 9 and 10)");
 
