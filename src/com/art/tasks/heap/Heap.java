@@ -27,6 +27,31 @@ public class Heap {
         arr = new int[maxSize + 1];
     }
 
+    public static void main(String[] args) {
+        Heap heap = new Heap(50);
+        heap.insert(10);
+        heap.insert(20);
+        heap.insert(30);
+        heap.insert(40);
+        heap.insert(50);
+        heap.insert(60);
+        heap.insert(70);
+        heap.insert(80);
+        System.out.println(heap);
+        heap.removeRoot();
+        System.out.println(heap);
+        heap.insert(10);
+        System.out.println(heap);
+        heap.insert(5);
+        System.out.println(heap);
+        heap.removeRoot();
+        System.out.println(heap);
+        heap.removeRoot();
+        System.out.println(heap);
+        heap.removeRoot();
+        System.out.println(heap);
+    }
+
     public void insert(final int value) {
         if (size >= maxSize) return;
         arr[size] = value;
@@ -41,20 +66,20 @@ public class Heap {
         }
     }
 
-    private int getParent(final int index) {
-        return (index - 1) / 2;
-    }
-
-    private void swap(final int index1, final int index2) {
-        int value = arr[index1];
-        arr[index1] = arr[index2];
-        arr[index2] = value;
-    }
-
     public void removeRoot() {
         if (size == 0) return;
         arr[0] = arr[--size];
-        heapify();
+        heapify(0);
+    }
+
+    public void delete(final int value) {
+        for (int i = 0; i < size; i++) {
+            if (arr[i] == value) {
+                arr[i] = arr[--size];
+                heapify(i);
+                return;
+            }
+        }
     }
 
     @Override
@@ -66,17 +91,30 @@ public class Heap {
         return stringBuilder.toString();
     }
 
-    private void heapify() {
-        int index = 0;
-        while (minHeap && !isLeaf(index) && arr[index] > arr[getChild(index)]) {
-            int tempIndex = getChild(index);
-            swap(index, getChild(index));
-            index = tempIndex;
+    private int getParent(final int index) {
+        return (index - 1) / 2;
+    }
+
+    private void swap(final int index1, final int index2) {
+        int value = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = value;
+    }
+
+    /**
+     * @param index index from witch start heapify
+     */
+    private void heapify(final int index) {
+        int i = index;
+        while (minHeap && !isLeaf(i) && arr[i] > arr[getChild(i)]) {
+            int tempIndex = getChild(i);
+            swap(i, getChild(i));
+            i = tempIndex;
         }
-        while (!minHeap && !isLeaf(index) && arr[index] < arr[getChild(index)]) {
-            int tempIndex = getChild(index);
-            swap(index, getChild(index));
-            index = tempIndex;
+        while (!minHeap && !isLeaf(i) && arr[i] < arr[getChild(i)]) {
+            int tempIndex = getChild(i);
+            swap(i, getChild(i));
+            i = tempIndex;
         }
     }
 
@@ -101,30 +139,5 @@ public class Heap {
 
     private boolean isLeaf(final int index) {
         return getChild(index) == -1;
-    }
-
-    public static void main(String[] args) {
-        Heap heap = new Heap(50);
-        heap.insert(10);
-        heap.insert(20);
-        heap.insert(30);
-        heap.insert(40);
-        heap.insert(50);
-        heap.insert(60);
-        heap.insert(70);
-        heap.insert(80);
-        System.out.println(heap);
-        heap.removeRoot();
-        System.out.println(heap);
-        heap.insert(10);
-        System.out.println(heap);
-        heap.insert(5);
-        System.out.println(heap);
-        heap.removeRoot();
-        System.out.println(heap);
-        heap.removeRoot();
-        System.out.println(heap);
-        heap.removeRoot();
-        System.out.println(heap);
     }
 }

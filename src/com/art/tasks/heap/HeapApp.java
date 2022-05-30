@@ -30,8 +30,13 @@ public class HeapApp {
                 heap.insert(Integer.parseInt(scanner.nextLine()));
                 yield true;
             }
-            case REMOVE -> {
+            case REMOVE_ROOT -> {
                 heap.removeRoot();
+                yield true;
+            }
+            case DELETE -> {
+                System.out.println("Please enter value to delete");
+                heap.delete(Integer.parseInt(scanner.nextLine()));
                 yield true;
             }
             case DISPLAY -> {
@@ -44,7 +49,8 @@ public class HeapApp {
     private enum MenuOptions {
         EXIT("Return to main menu"),
         INSERT("Insert value"),
-        REMOVE("Remove root element"),
+        REMOVE_ROOT("Remove root element"),
+        DELETE("Delete value from heap"),
         DISPLAY("Display heap");
         private final String text;
 
