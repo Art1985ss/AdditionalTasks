@@ -3,6 +3,7 @@ package com.art.tasks;
 import com.art.tasks.binary.BinaryTreeApp;
 import com.art.tasks.doubly.DoublyListApp;
 import com.art.tasks.heap.HeapApp;
+import com.art.tasks.other.OtherTasksApp;
 import com.art.tasks.postfix.PostfixCalculatorApp;
 import com.art.tasks.stack.NodeStackApp;
 
@@ -52,6 +53,10 @@ public class Main {
                 new PostfixCalculatorApp().execute();
                 yield true;
             }
+            case OTHER_TASKS -> {
+                new OtherTasksApp().execute();
+                yield true;
+            }
         };
     }
 
@@ -61,7 +66,8 @@ public class Main {
         DOUBLY_LINKED_LIST("Interact with doubly linked list (task 3)"),
         HEAP("Interact with min heap (task 5)"),
         BINARY_TREE("Binary search tree and traversing a binary tree demo (tasks 4 and 6)"),
-        INFIX_POSTFIX("Conversion from infix to postfix and postfix calculations demo (task 9 and 10)");
+        INFIX_POSTFIX("Conversion from infix to postfix and postfix calculations demo (task 9 and 10)"),
+        OTHER_TASKS("Palindrome and brackets checks (task 11 and 12)");
 
         private final String text;
 

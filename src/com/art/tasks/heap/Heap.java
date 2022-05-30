@@ -3,7 +3,7 @@ package com.art.tasks.heap;
 public class Heap {
     private final int maxSize;
     private final boolean minHeap;
-    private int[] arr;
+    private final int[] arr;
     private int size;
 
     /**
